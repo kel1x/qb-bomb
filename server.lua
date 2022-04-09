@@ -35,8 +35,8 @@ PerformHttpRequest(Config.DiscordWebhook, function(err, text, headers) end, 'POS
     }}
 }), {['Content-Type'] = 'application/json' })
 
-RegisterServerEvent('kalas:log')
-AddEventHandler('kalas:log', function(text)
+RegisterServerEvent('bomba:log')
+AddEventHandler('bomba:log', function(text)
     local src = source
     local xPlayer = QBCore.Functions.GetPlayer(src)
     discordlog(xPlayer, text)
