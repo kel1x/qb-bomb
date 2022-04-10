@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local timer = 0
 local targetvozilo
-local ped = GetPlayerPed(-1)
+local ped = PlayerPedId()
 
 RegisterNetEvent('bomba:provera')
 AddEventHandler('bomba:provera', function()
