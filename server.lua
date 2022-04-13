@@ -1,17 +1,17 @@
-local QBCore = exports['galaxy-core']:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
-QBCore.Functions.CreateUseableItem('bomba', function(source)
+QBCore.Functions.CreateUseableItem('bomb', function(source)
     local xPlayer = QBCore.Functions.GetPlayer(source)
-    if xPlayer.Functions.GetItemByName('bomba') ~= nil then
-        TriggerClientEvent('bomba:provera', source)
+    if xPlayer.Functions.GetItemByName('bomb') ~= nil then
+        TriggerClientEvent('bomb:check', source)
     end
 end)
 
-RegisterServerEvent('bomba:ukloni')
-AddEventHandler('bomba:ukloni', function()
+RegisterServerEvent('bomb:remove')
+AddEventHandler('bomb:remove', function()
     local xPlayer = QBCore.Functions.GetPlayer(source)
 
-    if xPlayer.Functions.GetItemByName('bomba') ~= nil then
-        xPlayer.Functions.RemoveItem('bomba', 1)
+    if xPlayer.Functions.GetItemByName('bomb') ~= nil then
+        xPlayer.Functions.RemoveItem('bomb', 1)
     end
 end)
