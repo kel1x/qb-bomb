@@ -41,7 +41,7 @@ AddEventHandler('bomb:check', function()
             })    
             Citizen.Wait(5000)
             ClearPedTasksImmediately(ped)
-            TriggerServerEvent('bomb;remove')
+            TriggerServerEvent('bomb:remove')
             TriggerServerEvent("qb-log:server:CreateLog", "default", "💣 **Placed bomb:** " ..name.. "\n🚗 **Vehicle Plates:** " ..plates.. "\n📍 **Location:** " ..hash..", " ..zone.."")
             QBCore.Functions.Notify("You placed the bomb, to detonate press G", "success")
             targetVehicle = veh
