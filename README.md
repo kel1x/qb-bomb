@@ -4,7 +4,6 @@ Detonator Vozila System - QBCore
 
 Dependencies:
   - qb-core
-  - progressBars
 
 
 Add this to qb-core/shared/items.lua in order to work:
