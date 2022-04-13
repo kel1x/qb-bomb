@@ -1,10 +1,10 @@
-local QBCore = exports['galaxy-core']:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
 local timer = 0
 local targetVehicle
 
-RegisterNetEvent('bomba:provera')
-AddEventHandler('bomba:provera', function()
+RegisterNetEvent('bomb:check')
+AddEventHandler('bomb:check', function()
     local ped = PlayerPedId()
     local coords = GetEntityCoords(ped)
     local veh = GetClosestVehicle(coords.x, coords.y, coords.z, 3.000, 0, 70)
@@ -22,9 +22,9 @@ AddEventHandler('bomba:provera', function()
     if not IsPedInAnyVehicle(ped, false) then
         if veh and (dist < 3.0) then
             exports['progressbar']:Progress({
-                name = "postavljanje_bombe",
+                name = "placing_bomb",
                 duration = 5000,
-                label = "Postavljate bombu...",
+                label = "You are placing bomb on vehicle...",
                 useWhileDead = false,
                 canCancel = true,
                 controlDisables = {
@@ -41,9 +41,9 @@ AddEventHandler('bomba:provera', function()
             })    
             Citizen.Wait(5000)
             ClearPedTasksImmediately(ped)
-            TriggerServerEvent('bomba:ukloni')
-            TriggerServerEvent("qb-log:server:CreateLog", "default", "💣 **Postavio bombu:** " ..name.. "\n🚗 **Tablice Vozila:** " ..plates.. "\n📍 **Lokacija:** " ..hash..", " ..zone.."")
-            QBCore.Functions.Notify("Postavili ste bombu,kada budete hteli da je detonirate pritisnite tipku G", "success")
+            TriggerServerEvent('bomb;remove')
+            TriggerServerEvent("qb-log:server:CreateLog", "default", "💣 **Placed bomb:** " ..name.. "\n🚗 **Vehicle Plates:** " ..plates.. "\n📍 **Location:** " ..hash..", " ..zone.."")
+            QBCore.Functions.Notify("You placed the bomb, to detonate press G", "success")
             targetVehicle = veh
             
             while targetVehicle do
@@ -55,10 +55,10 @@ AddEventHandler('bomba:provera', function()
                 end    
             end
         else
-            QBCore.Functions.Notify("Nema vozila u blizini!", "error")
+            QBCore.Functions.Notify("No vehicles nearby!", "error")
         end 
     else
-        QBCore.Functions.Notify("Morate biti van vozila!", "error")
+        QBCore.Functions.Notify("You have to be out of the vehicle!", "error")
     end
 end)
 
